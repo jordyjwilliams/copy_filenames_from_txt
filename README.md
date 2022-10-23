@@ -14,6 +14,7 @@ An output directory, search directory and file containing the sub-strings to mat
     * Handles the case where more than one file matches the sub-string.
     * Only the files that match lines in the supplied input file will be copied.
     * Will not overwrite or remove data.
+    * Supports local and absolute paths.
 
 ## Demo Example
 [![asciicast](https://asciinema.org/a/531445.svg)](https://asciinema.org/a/531445)
@@ -40,8 +41,9 @@ Uses an input file with each line containing a sub-string to search for.
 Syntax: copy_filenames_from_txt.sh [-v|h] [-f file|-d dir|-o dir]
 options:
 -f     File with desired sub-strings of filenames to copy. Usually .txt. Each search string on new line.
--d     Search directory. Usually ./ (if in desired directory). Will be recursively searched for any matches in -f.
--o     Output directory. All files contained within -d whose name contains any line within -f will be copied here. Note: will be created if does not exist.
+-d     Search directory. Will be recursively searched for any matches in -f. Usually ./ (if cd is desired directory).
+-o     Output directory. To copy all matching files to. Note: will be created if does not exist.
+-V     Display Version string: 0.0.1.
 -h     Display this Help.
 -v     Verbose prints.
 ```

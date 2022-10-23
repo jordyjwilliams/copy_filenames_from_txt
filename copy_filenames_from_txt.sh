@@ -7,6 +7,7 @@ CYAN="\033[36m"
 MAGENTA="\033[35m"
 YELLOW="\033[33m"
 RESET="\033[0m"
+SCRIPT_VERSION="0.0.1"
 ############################################################
 # Help                                                     #
 ############################################################
@@ -20,8 +21,9 @@ Help()
    echo -e "${YELLOW}Syntax:${GREEN} $(basename $0) ${RED}[-v|h] [-f file|-d dir|-o dir]${RESET}"
    echo -e "options:"
    echo -e "${RED}-f${RESET}     ${YELLOW}File${RESET} with desired sub-strings of filenames to copy. Usually ${YELLOW}.txt${RESET}. Each search string on new line."
-   echo -e "${RED}-d${RESET}     ${YELLOW}Search directory${RESET}. Usually ${YELLOW}./${RESET} (if in desired directory). Will be recursively searched for any matches in ${RED}-f${RESET}."
-   echo -e "${RED}-o${RESET}     ${YELLOW}Output directory${RESET}. All files contained within ${RED}-d${RESET} whose name contains any line within ${RED}-f${RESET} will be copied here. Note: will be created if does not exist."
+   echo -e "${RED}-d${RESET}     ${YELLOW}Search directory${RESET}. Will be recursively searched for any matches in ${RED}-f${RESET}. Usually ${YELLOW}./${RESET} (if cd is desired directory)."
+   echo -e "${RED}-o${RESET}     ${YELLOW}Output directory${RESET}. To copy all matching files to. ${RED}Note${RESET}: will be created if does not exist."
+   echo -e "${RED}-V${RESET}     Display ${YELLOW}Version${RESET} string: ${RED}$SCRIPT_VERSION${RESET}."
    echo -e "${RED}-h${RESET}     Display this ${YELLOW}Help${RESET}."
    echo -e "${RED}-v${RESET}     ${YELLOW}Verbose${RESET} prints."
    echo
@@ -30,13 +32,14 @@ Help()
 ############################################################
 # CLI inputs                                               #
 ############################################################
-while getopts "hvf:d:o:" option;
+while getopts "hvVf:d:o:" option;
 do
     case "${option}" in
         f) SEARCH_FILE=${OPTARG};;
         d) SEARCH_DIR=${OPTARG};;
         o) OUTPUT_DIR=${OPTARG};;
         v) VERBOSE="true";;
+        V) echo $SCRIPT_VERSION; exit;;
         h) 
          Help
          exit ;;
