@@ -5,6 +5,11 @@
 
 An output directory, search directory and file containing the sub-strings to match each filename to can all be passed.
 
+## Setup/Installation/How to use
+* `git clone` this repo to somewhere you want to store the bash script
+* `chmod u+x ./copy_filenames_from_txt.sh` make the script executable
+* Use away!
+
 ## But Why Though?
 * You're working with a bunch of files (images in my example).
     * You've made a selection and have a list of filenames (or partial/substrings from filenames)
